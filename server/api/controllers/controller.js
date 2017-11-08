@@ -20,7 +20,7 @@ var controller = require('../controllers/controller')
 //Controller for adding admin user
 exports.add_user = function(req, res){
 	var newEmail = req.body.email;
-	console.log(req.body + '!!!!!All Details!!!!!');
+	console.log(req.body);
 
 	//Verifying if EMAIL is duplicate or not
 	userSchema.find({email: newEmail}, function(err, result){
@@ -51,6 +51,28 @@ exports.add_user = function(req, res){
 	});	
 }
 
+//Controller for inserting Simple Table data
+exports.add_simpletable = function(req, res){
+	var simple = new simpleTable();
+	 console.log(req.body);
+
+	 simple.task = req.body.task;
+	 simple.progress = req.body.progress;
+	 simple.label = req.body.label;
+	 simple.user = req.body.user;
+	 simple.status = req.body.status;
+	 simple.reason = req.body.reason;
+	 simple.save(function(err, data){
+	 	if(err){
+	 		console.log(err);
+	 	}
+	 	else{
+	 		console.log("Simple Data Saved");
+	 		return res.json(data);
+	 	}
+	 });
+}
+
 //Controller for Getting Simple Tables data
 exports.get_simpletable = function(req, res){
 	simpleTable.find(function(err, data){
@@ -62,6 +84,28 @@ exports.get_simpletable = function(req, res){
 			return res.json(data);
 		}
 	});
+}
+
+//Controller for inserting DataTable data
+exports.add_datatable = function(req, res){
+	var data = new dataTable();
+	 console.log(req.body);
+
+	 data.rendering_engine = req.body.rendering_engine;
+	 data.browser = req.body.browser;
+	 data.platforms = req.body.platforms;
+	 data.engine_version = req.body.engine_version;
+	 data.css_grade = req.body.css_grade;
+	 data.reason = req.body.reason;
+	 data.save(function(err, data){
+	 	if(err){
+	 		console.log(err);
+	 	}
+	 	else{
+	 		console.log("Data Data Saved");
+	 		return res.json(data);
+	 	}
+	 });
 }
 
 //Controller for Getting Data Tables data

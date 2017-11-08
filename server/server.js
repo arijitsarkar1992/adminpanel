@@ -3,7 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var router = express.Router();
-var appRoutes = require('./app/routes/api')(router);
+var appRoutes = require('./api/routes/api')(router);
 const objectId = require('mongoose').ObjectId;
 
 var bodyParser = require('body-parser');
@@ -44,11 +44,7 @@ app.use('/api', appRoutes);
 app.get('/', function(req, res){
 	res.send('Hello');
 });
-app.get('/home', function(req, res){
-	res.send('hello home');
-});
 
-	
 //Listening To port 3000
 app.listen(process.env.PORT || 3000,function(){
 	console.log("Running on Port:3000")

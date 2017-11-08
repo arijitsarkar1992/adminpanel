@@ -19,8 +19,15 @@ module.exports = function(router){
 
 //Route For Creating User
 	router.post('/add_user', controller.add_user);
+
+//Route for adding simpletable data
+	router.post('/add_simpletable', controller.add_simpletable);
+
 //Route for Getting simpletable data
 	router.get('/get_simpletable', controller.get_simpletable);
+
+//Route for adding DATATABLE data
+	router.post('/add_datatable', controller.add_datatable)
 
 //Route for Getting DATATABLE data
 	router.get('/get_datatable', controller.get_datatable);
