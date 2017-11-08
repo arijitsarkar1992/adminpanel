@@ -45,7 +45,7 @@ app.get('/', function(req, res){
 	res.send('Hello');
 });
 app.get('/home', function(req, res){
-	res.send('home');
+	res.send('hello home');
 });
 
 	
