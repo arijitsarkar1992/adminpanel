@@ -26,4 +26,4 @@ var simpleTable = new schema({
 		type: String,
 	}
 });
-module.exports = mongoose.model('simpleTableSchema', simpleTable)
+module.exports = mongoose.model('simpleTableSchema', simpleTable);

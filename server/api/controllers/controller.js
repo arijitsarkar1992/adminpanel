@@ -15,7 +15,9 @@ var userSchema = require('../models/user');
 var simpleTable = require('../models/simpletable');
 var dataTable = require('../models/datatables');
 var chartJs = require('../models/chartjs');
+var lineChart = require('../models/linechart');
 var controller = require('../controllers/controller')
+
 
 //Controller for adding admin user
 exports.add_user = function(req, res){
@@ -121,3 +123,7 @@ exports.get_datatable = function(req, res){
 	})
 }
 
+//Controller for Addin LineChart data
+// exports.add_linechart = function(req, res){
+	
+// }
