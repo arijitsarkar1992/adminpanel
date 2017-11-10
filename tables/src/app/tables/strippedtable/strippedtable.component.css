@@ -1,0 +1,21 @@
+.label{
+	font-size: 107%;
+}
+.Stripped_table{
+	background: #fff;
+	border: 1px solid white;
+	margin-top: 20px;
+	padding: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+h2{
+	display: inline;
+    line-height: 69px;
+}
+ul{
+	display: inline-block;
+	text-align: right;
+	float: right;
+
+}

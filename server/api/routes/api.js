@@ -31,12 +31,14 @@ module.exports = function(router){
 
 //Route for Getting DATATABLE data
 	router.get('/get_datatable', controller.get_datatable);
+//Route for posting form data
+	router.post('/add_form_data',controller.save_form_data);
 
 //Route for adding LineChart data
-	router.post('/add_linechart', controller.add_linechart);
+	//router.post('/add_linechart', controller.add_linechart);
 
 //Route for gettin LineChart Data
-	router.get('/get_linechart', controller.get_linechart);
+	//router.get('/get_linechart', controller.get_linechart);
 
 	return router;
 }

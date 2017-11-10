@@ -16,6 +16,7 @@ var simpleTable = require('../models/simpletable');
 var dataTable = require('../models/datatables');
 var chartJs = require('../models/chartjs');
 var lineChart = require('../models/linechart');
+var formData =require ('../models/forms');
 var controller = require('../controllers/controller')
 
 
@@ -121,6 +122,22 @@ exports.get_datatable = function(req, res){
 			return res.json(data);
 		}
 	})
+}
+//function to save form data
+exports.save_form_data=function(req,res){
+	var newData=new formData();
+	newData.email=req.body.email;
+	newData.password=req.body.password;
+	newData.username=req.body.username;
+	newData.save(function(err,result){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log(result);
+		}
+	})
+
 }
 
 //Controller for Addin LineChart data
