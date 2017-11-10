@@ -1,0 +1,24 @@
+<div class="container-fluid">
+	<div class="hover_table">
+		<h2>Hover Responsive Table</h2>
+		<hr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>User</th>
+					<th>Date</th>
+					<th>Status</th>
+					<th>Reason</th>
+				</tr>
+			</thead>
+			<tr *ngFor="let info of tabledata index as i">
+				<td>{{i+1}}</td>
+				<td>{{info.user}}</td>
+				<td>{{info.date}}</td>
+				<td><p class="label " [ngClass]="{'label-warning':info.status=='pending','label-success':info.status == 'Approved','label-danger':info.status=='Denied'}">{{info.status}}</p></td>
+				<td>{{info.reason}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

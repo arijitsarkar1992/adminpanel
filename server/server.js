@@ -5,15 +5,19 @@ var morgan = require('morgan');
 var router = express.Router();
 var appRoutes = require('./api/routes/api')(router);
 const objectId = require('mongoose').ObjectId;
+var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 
 var bodyParser = require('body-parser');
 
 mongoose.connect('mongodb://localhost:27017/adminlte', function(err){
 	if(err){
 		console.log('Not Connected!!', err);
+		res.status(400).send("Not Connected");
 	}
 	else{
 		console.log("Connected to db!!");
+		res.status(200).send("Connected");
 	}
 });
 
@@ -25,6 +29,9 @@ app.use(bodyParser.json());
 
 //For parsing application x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
+
+//Json Web Token JWT
+app.use(expressJwt({secret: 'jalaj'}).unless({path: ['/api/login']}))
 
 //Cors
 app.use(function(req, res, next) {

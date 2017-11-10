@@ -16,7 +16,8 @@ var simpleTable = require('../models/simpletable');
 var dataTable = require('../models/datatables');
 var chartJs = require('../models/chartjs');
 var lineChart = require('../models/linechart');
-var controller = require('../controllers/controller')
+var controller = require('../controllers/controller');
+var formData =require ('../models/forms');
 
 
 //Controller for adding admin user
@@ -51,6 +52,21 @@ exports.add_user = function(req, res){
 			res.json(0);
 		}
 	});	
+}
+
+//Controller for login user
+exports.login = function(req, res){
+	var userName = req.body.email;
+	var pass = req.body.password;
+	userSchema.find({email: userName, password: pass}, function(err, data){
+		if(err){
+			console.log(err);
+			return res.json(0);
+		}
+		else{
+			return res.json(data);
+		}
+	});
 }
 
 //Controller for inserting Simple Table data
@@ -117,13 +133,55 @@ exports.get_datatable = function(req, res){
 			console.log(err);
 		}
 		else{
-			console.log("DATATABLE recieved!1");
+			console.log("DATATABLE recieved!!!");
 			return res.json(data);
 		}
 	})
 }
 
-//Controller for Addin LineChart data
-// exports.add_linechart = function(req, res){
-	
-// }
+//Controller for Adding LineChart data
+ exports.add_linechart = function(req, res){
+	var linedata = 	new lineChart();
+	console.log(req.body);
+
+	linedata.data = req.body.data;
+	linedata.save(function(err, data){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log("Line Data Add!!!");
+			return res.json(data);
+		}
+	});
+}
+
+//Controller for Getting Line Chart Data
+exports.get_linechart = function(req, res){
+	lineChart.find(function(err, data){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log("LINE CHART DATA Recieved!!!");
+			return res.json(data);
+		}
+	});
+}
+
+//Controller for Adding form data
+exports.add_formdata=function(req,res){
+	var newData=new formData();
+	newData.email=req.body.email;
+	newData.password=req.body.password;
+	newData.username=req.body.username;
+	newData.save(function(err,result){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log(result);
+		}
+	})
+
+}

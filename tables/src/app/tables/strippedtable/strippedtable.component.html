@@ -1,0 +1,33 @@
+<div class="Stripped_table">
+	
+	<div class="row page-header">
+		<h2>Stripped Table</h2>
+		<ul class="pagination pagination">
+			<li><a routerLink="">1</a></li>
+			<li><a routerLink="">2</a></li>
+			<li><a routerLink="">3</a></li>
+			<li><a routerLink="">4</a></li>
+		</ul>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Task</th>
+				<th>Progress</th>
+				<th>Label</th>
+			</tr>
+		</thead>
+		<tr *ngFor="let info of tabledata index as i">
+				<td>{{i+1}}</td>
+				<td>{{info.reason}}</td>
+				<td>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%':info.progress}" [ngClass]="{'progress-bar-danger': info.progress<50,'progress-bar-success':info.progress>75, 'progress-bar-warning': info.progress<60}">{{info.label}}
+						</div>
+					</div>
+				</td>
+				<td><p class="label label-primary" [ngClass]="{'label-danger': info.progress<50,'label-success':info.progress>75, 'label-warning': info.progress<60}">{{info.progress}}</p></td>
+			</tr>
+		</table>
+</div>
