@@ -16,8 +16,13 @@ var simpleTable = require('../models/simpletable');
 var dataTable = require('../models/datatables');
 var chartJs = require('../models/chartjs');
 var lineChart = require('../models/linechart');
+<<<<<<< HEAD
 var controller = require('../controllers/controller');
 var formData =require ('../models/forms');
+=======
+var formData =require ('../models/forms');
+var controller = require('../controllers/controller')
+>>>>>>> acb7627b907230ef0753ca0f10c8e546fda8e62f
 
 
 //Controller for adding admin user
@@ -137,6 +142,22 @@ exports.get_datatable = function(req, res){
 			return res.json(data);
 		}
 	})
+}
+//function to save form data
+exports.save_form_data=function(req,res){
+	var newData=new formData();
+	newData.email=req.body.email;
+	newData.password=req.body.password;
+	newData.username=req.body.username;
+	newData.save(function(err,result){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log(result);
+		}
+	})
+
 }
 
 //Controller for Adding LineChart data
