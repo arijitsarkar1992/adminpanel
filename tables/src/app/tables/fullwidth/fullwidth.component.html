@@ -12,7 +12,7 @@
 			</thead>
 			<tr *ngFor="let info of tabledata index as i">
 				<td>{{i+1}}</td>
-				<td>{{info.reason}}</td>
+				<td>{{info.task}}</td>
 				<td>
 					<div class="progress">
 						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%':info.progress}" [ngClass]="{'progress-bar-danger': info.progress<50,'progress-bar-success':info.progress>75, 'progress-bar-warning': info.progress<60}">{{info.label}}
