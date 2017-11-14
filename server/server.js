@@ -5,19 +5,15 @@ var morgan = require('morgan');
 var router = express.Router();
 var appRoutes = require('./api/routes/api')(router);
 const objectId = require('mongoose').ObjectId;
-var expressJwt = require('express-jwt');
-var jwt = require('jsonwebtoken');
 
 var bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost:27017/adminlte', function(err, res){
+mongoose.connect('mongodb://localhost:27017/adminlte', function(err){
 	if(err){
 		console.log('Not Connected!!', err);
-		//res.status(400).send("Not Connected");
 	}
 	else{
 		console.log("Connected to db!!");
-		//res.status(200).send("Connected");
 	}
 });
 

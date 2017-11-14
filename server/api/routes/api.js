@@ -14,8 +14,6 @@ var simpleTable = require('../models/simpletable');
 var dataTable = require('../models/datatables');
 var chartJs = require('../models/chartjs');
 var controller = require('../controllers/controller');
-var expressJwt = require('express-jwt');
-var jwt = require('jsonwebtoken');
 //Router Module for building up routes
 module.exports = function(router){
 
@@ -23,6 +21,7 @@ module.exports = function(router){
 	router.post('/add_user', controller.add_user);
 
 //Route For LogIn request
+//Handle by Passport JS
 	router.post('/login', controller.login);
 
 //Route for adding simpletable data
@@ -40,10 +39,10 @@ module.exports = function(router){
 	router.post('/add_form_data',controller.save_form_data);
 
 //Route for adding LineChart data
-	//router.post('/add_linechart', controller.add_linechart);
+	router.post('/add_linechart', controller.add_linechart);
 
 //Route for gettin LineChart Data
-	//router.get('/get_linechart', controller.get_linechart);
+	router.get('/get_linechart', controller.get_linechart);
 
 //Route for posting form data
 	router.post('/add_form_data',controller.add_formdata);	
